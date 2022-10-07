@@ -1,5 +1,5 @@
-Online Order System
-Run Using Docker:
+# Online Order System
+### Run Using Docker:
 ``` sh
 # Note we need to add .env first at base direcotry 
 # .env file will hold those data: 
@@ -23,8 +23,15 @@ this link will only be available after running docker
 for admin portal use:
 ```
 http://127.0.0.1:8000/admin/
-```
-using username: admin@mail.com
+
+using email: admin@mail.com
       password: 12345678
+```
 Note:
 If .env file does not exist, the default values will be used which will lead to the use of sqlite instead of Postgres
+
+### running frontend with angular:
+```
+after clone the app go to folder onlineOrder 
+install dependances with npm i -f
+and run the frontend using ng serve
