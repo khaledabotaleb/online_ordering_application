@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>{{data.headerName}}</h1>
+<form [formGroup]="productForm" (submit)="onSubmit()" autocomplete="off">
+
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Price</mat-label>
+          <input type="number" matInput formControlName="price">
+        </mat-form-field>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Stock Items</mat-label>
+          <input type="number" matInput formControlName="stock_items">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6" *ngIf="!data.data.image">
+        <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">
+        <span class="file-name">{{selectedFile?.name}}</span>
+      </div>
+      <div class="col-md-6" *ngIf="data.data.image">
+        <img [src]="data.data.image" class="w-100 img-thumbnail mt-1" [alt]="data.data.name">
+        <button class="btn btn-danger w-100" (click)="onDeleteImage()" type="button">Delete</button>
+      </div>
+    </div>
+
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()" type="button">No Thanks</button>
+    <button mat-button type="submit">Ok</button>
+  </div>
+</form>
+

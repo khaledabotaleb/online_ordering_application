@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>Online Order System</span>
+  <button mat-button routerLink="/main/product" routerLinkActive="mat-warn">My Products</button>
+  <button mat-button routerLink="/main/orders" routerLinkActive="mat-warn">Orders</button>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matBadge]="cartService.cartList.cart_items.length" matBadgePosition="before"
+          matBadgeColor="accent" [matMenuTriggerFor]="menu">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  <button mat-icon-button (click)="logOut()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container mt-3">
+  <router-outlet></router-outlet>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let cart of cartService.cartList.cart_items" (click)="openBottomSheet( cart)">
+    <img [src]="cart.product.image" class="img-fluid float-start img" alt="">
+    <span>{{cart.product.name}}</span>
+  </button>
+  <mat-list role="list">
+    <mat-list-item>Total Price : {{cartService.cartList.total_price}}</mat-list-item>
+  </mat-list>
+</mat-menu>

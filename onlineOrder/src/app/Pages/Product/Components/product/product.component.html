@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <mat-toolbar color="primary">
+      <span class="example-spacer"></span>
+      <button mat-icon-button (click)="onAddProduct()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Stock Items</th>
+        <th scope="col" class="float-end">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let prod of productList.results">
+        <th>
+          <img [src]="prod.image" [alt]="prod.name"  class="img-thumbnail img" *ngIf="prod.image">
+        </th>
+        <td>{{prod.name}}</td>
+        <td>{{prod.price}}</td>
+        <td>{{prod.stock_items}}</td>
+        <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" type="button" class="float-end"
+                  [matMenuTriggerData]="{element: prod}" >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<mat-menu #menu="matMenu" xPosition="before">
+  <ng-template matMenuContent let-product="element">
+    <button mat-menu-item (click)="onViewProduct(product)">
+      <span>View</span>
+    </button>
+    <button mat-menu-item (click)="onEditProduct(product)">
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item (click)="onDeleteProduct(product)">
+      <span>Remove</span>
+    </button>
+  </ng-template>
+</mat-menu>

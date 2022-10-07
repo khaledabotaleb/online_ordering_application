@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{data.headerName}}</h1>
+<form [formGroup]="productQuantityForm" (submit)="onSubmit()" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Quantity</mat-label>
+          <input matInput formControlName="quantity">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()" type="button">No Thanks</button>
+    <button mat-button type="submit">Ok</button>
+  </div>
+</form>

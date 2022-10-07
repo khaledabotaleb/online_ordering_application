@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stock Items</th>
+          <th scope="col" class="float-end" >Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orderList">
+          <th>
+            <img [src]="order.image" [alt]="order.name" class="img-thumbnail img" *ngIf="order.image">
+          </th>
+          <td>{{order.name}}</td>
+          <td>{{order.price}}</td>
+          <td>{{order.stock_items}}</td>
+          <td>
+            <button mat-stroked-button color="primary" class="float-end" (click)="onAddToCart(order)" *ngIf="!onCheck(order.id)">Add To Cart</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

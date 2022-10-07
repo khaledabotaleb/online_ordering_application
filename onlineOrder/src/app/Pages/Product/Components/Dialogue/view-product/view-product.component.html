@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{data.headerName}}</h1>
+<div mat-dialog-content>
+  <div class="card">
+    <img [src]="data.data.image" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">Description: {{data.data.description}}</p>
+      <ul class="list-group">
+        <li class="list-group-item">Price: {{data.data.price}}</li>
+        <li class="list-group-item">Stock Items: {{data.data.stock_items}}</li>
+        <li class="list-group-item">Created At: {{data.data.create_at | date}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

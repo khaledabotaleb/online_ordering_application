@@ -1,0 +1,12 @@
+<mat-nav-list>
+  <button mat-list-item (click)="onEditToCart()">
+    <span mat-line>Edit</span>
+    <span mat-line>Edit {{data.product.name}} Quantity</span>
+  </button>
+
+  <button mat-list-item (click)="onDeleteCart()">
+    <span mat-line>Delete</span>
+    <span mat-line>Delete {{data.product.name}} From Cart</span>
+  </button>
+
+</mat-nav-list>
