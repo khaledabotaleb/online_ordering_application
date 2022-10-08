@@ -2,26 +2,24 @@ version: "3.9"
 
 services:
   db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=order
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+   image: postgres
+   volumes:
+     - ./data/db:/var/lib/postgresql/data
+   restart: always
+   environment:
+     - POSTGRES_DB=orders
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+   container_name: orders_db
   web:
+    container_name: order_online
     build: .
-    container_name: online-order-system
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+    env_file:
+      - ./online_ordering/.env
     ports:
       - "8000:8000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    env_file:
-      - .env
     depends_on:
       - db

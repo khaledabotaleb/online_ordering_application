@@ -6,13 +6,16 @@ ENV PYTHONUNBUFFERED=1
 
 # install dependencies
 RUN pip install --upgrade pip
-RUN apt-get update
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
 RUN pip install psycopg2-binary
+
 
 
 WORKDIR /code
 COPY requirements.txt /code/
-RUN pip install -r requirements.txt
+RUN pip install --default-timeout=1000 --no-cache-dir -r requirements.txt
 COPY . /code/
 
 COPY entrypoint.sh /code/

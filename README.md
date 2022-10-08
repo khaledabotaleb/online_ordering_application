@@ -35,3 +35,9 @@ If .env file does not exist, the default values will be used which will lead to 
 after clone the app go to folder onlineOrder 
 install dependances with npm i -f
 and run the frontend using ng serve
+and user portal http://localhost:4200/
+```
+
+Note:
+To create user you can create it from admin portal or user api from docs:
+http://127.0.0.1:8000/api/user/register/
